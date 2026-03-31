@@ -1,1 +1,5 @@
-key.json 
+# .gitignore
+obj/
+bin/
+.vs/
+*.user
