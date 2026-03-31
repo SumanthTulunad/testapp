@@ -10,7 +10,7 @@ on:
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
-
+    environment: production
     steps:
     # ✅ Checkout code
     - name: Checkout code
@@ -29,6 +29,9 @@ jobs:
     # ✅ Configure Docker for Artifact Registry
     - name: Configure Docker
       run: gcloud auth configure-docker us-central1-docker.pkg.dev
+
+    - name: Run Tests
+      run: dotnet test --no-restore --verbosity normal
 
     # ✅ Build Docker Image
     - name: Build Docker Image
